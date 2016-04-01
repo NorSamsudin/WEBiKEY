@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WEBiKEYApplicaion", "WEBiKEYApplicaion\WEBiKEYApplicaion.csproj", "{76B71BA7-3FF6-46BA-BD61-332B65621F7D}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://nids.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = InteractiveKeyWebApplicaion\\WEBiKEYApplicaion.csproj
+		SccProjectName1 = InteractiveKeyWebApplicaion
+		SccLocalPath1 = InteractiveKeyWebApplicaion
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{76B71BA7-3FF6-46BA-BD61-332B65621F7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76B71BA7-3FF6-46BA-BD61-332B65621F7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76B71BA7-3FF6-46BA-BD61-332B65621F7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76B71BA7-3FF6-46BA-BD61-332B65621F7D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

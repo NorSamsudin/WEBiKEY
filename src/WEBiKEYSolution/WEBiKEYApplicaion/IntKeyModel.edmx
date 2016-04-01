@@ -1,0 +1,539 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="InteractiveKeyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Character">
+          <Key>
+            <PropertyRef Name="CharacterID" />
+          </Key>
+          <Property Name="CharacterID" Type="int" Nullable="false" />
+          <Property Name="CharacterCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CharacterDescription" Type="nvarchar(max)" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="Image" Type="image" />
+        </EntityType>
+        <EntityType Name="CharacterCategory">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CharacterState">
+          <Key>
+            <PropertyRef Name="CharacterStateID" />
+          </Key>
+          <Property Name="CharacterStateID" Type="int" Nullable="false" />
+          <Property Name="CharacterID" Type="int" Nullable="false" />
+          <Property Name="CharacterStateCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CharacterStateDescription" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="DisabledCharacter">
+          <Key>
+            <PropertyRef Name="CharacterStateID" />
+            <PropertyRef Name="CharacterID" />
+          </Key>
+          <Property Name="CharacterStateID" Type="int" Nullable="false" />
+          <Property Name="CharacterID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Species">
+          <Key>
+            <PropertyRef Name="SpeciesID" />
+          </Key>
+          <Property Name="SpeciesID" Type="int" Nullable="false" />
+          <Property Name="SpeciesName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="DescriptionFile" Type="varbinary(max)" />
+          <Property Name="DescriptionFileName" Type="varchar" MaxLength="1024" />
+        </EntityType>
+        <EntityType Name="SpeciesCaracter">
+          <Key>
+            <PropertyRef Name="SpeciesID" />
+            <PropertyRef Name="CharacterStateID" />
+          </Key>
+          <Property Name="SpeciesID" Type="int" Nullable="false" />
+          <Property Name="CharacterStateID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UploadedFile">
+          <Key>
+            <PropertyRef Name="FileID" />
+          </Key>
+          <Property Name="FileID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FileData" Type="varbinary(max)" Nullable="false" />
+          <Property Name="FileName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="FIleDescription" Type="varchar(max)" />
+          <Property Name="FileType" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'WEBiKEY-DB.dbo.CharacterDependencyView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CharacterDependencyView">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+            <PropertyRef Name="CategoryName" />
+            <PropertyRef Name="CharacterID" />
+            <PropertyRef Name="CharacterCode" />
+            <PropertyRef Name="CharacterStateID" />
+            <PropertyRef Name="CharacterStateCode" />
+            <PropertyRef Name="DisabledCharacterID" />
+            <PropertyRef Name="DisabledCharacterCode" />
+            <PropertyRef Name="DisabledCategoryID" />
+            <PropertyRef Name="DisabledCategoryName" />
+          </Key>
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CharacterID" Type="int" Nullable="false" />
+          <Property Name="CharacterCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CharacterDescription" Type="nvarchar(max)" />
+          <Property Name="CharacterStateID" Type="int" Nullable="false" />
+          <Property Name="CharacterStateCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CharacterStateDescription" Type="nvarchar(max)" />
+          <Property Name="DisabledCharacterID" Type="int" Nullable="false" />
+          <Property Name="DisabledCharacterCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DisabledCharacterDescription" Type="nvarchar(max)" />
+          <Property Name="DisabledCategoryID" Type="int" Nullable="false" />
+          <Property Name="DisabledCategoryName" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'WEBiKEY-DB.dbo.CharacterStateView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CharacterStateView">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+            <PropertyRef Name="CategoryName" />
+            <PropertyRef Name="CharacterID" />
+            <PropertyRef Name="CharacterCode" />
+            <PropertyRef Name="CharacterStateID" />
+            <PropertyRef Name="CharacterStateCode" />
+          </Key>
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CharacterID" Type="int" Nullable="false" />
+          <Property Name="CharacterCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CharacterDescription" Type="nvarchar(max)" />
+          <Property Name="CharacterStateID" Type="int" Nullable="false" />
+          <Property Name="CharacterStateCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CharacterStateDescription" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_Character_CharacterCategory">
+          <End Role="CharacterCategory" Type="Self.CharacterCategory" Multiplicity="1" />
+          <End Role="Character" Type="Self.Character" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CharacterCategory">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="Character">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CharacterState_Character">
+          <End Role="Character" Type="Self.Character" Multiplicity="1" />
+          <End Role="CharacterState" Type="Self.CharacterState" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Character">
+              <PropertyRef Name="CharacterID" />
+            </Principal>
+            <Dependent Role="CharacterState">
+              <PropertyRef Name="CharacterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DisabledCharacter_Character">
+          <End Role="Character" Type="Self.Character" Multiplicity="1" />
+          <End Role="DisabledCharacter" Type="Self.DisabledCharacter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Character">
+              <PropertyRef Name="CharacterID" />
+            </Principal>
+            <Dependent Role="DisabledCharacter">
+              <PropertyRef Name="CharacterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DisabledCharacter_CharacterState">
+          <End Role="CharacterState" Type="Self.CharacterState" Multiplicity="1" />
+          <End Role="DisabledCharacter" Type="Self.DisabledCharacter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CharacterState">
+              <PropertyRef Name="CharacterStateID" />
+            </Principal>
+            <Dependent Role="DisabledCharacter">
+              <PropertyRef Name="CharacterStateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpeciesCaracter_CharacterState">
+          <End Role="CharacterState" Type="Self.CharacterState" Multiplicity="1" />
+          <End Role="SpeciesCaracter" Type="Self.SpeciesCaracter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CharacterState">
+              <PropertyRef Name="CharacterStateID" />
+            </Principal>
+            <Dependent Role="SpeciesCaracter">
+              <PropertyRef Name="CharacterStateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpeciesCaracter_Species">
+          <End Role="Species" Type="Self.Species" Multiplicity="1" />
+          <End Role="SpeciesCaracter" Type="Self.SpeciesCaracter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Species">
+              <PropertyRef Name="SpeciesID" />
+            </Principal>
+            <Dependent Role="SpeciesCaracter">
+              <PropertyRef Name="SpeciesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="InteractiveKeyModelStoreContainer">
+          <EntitySet Name="Character" EntityType="Self.Character" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CharacterCategory" EntityType="Self.CharacterCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CharacterState" EntityType="Self.CharacterState" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DisabledCharacter" EntityType="Self.DisabledCharacter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Species" EntityType="Self.Species" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SpeciesCaracter" EntityType="Self.SpeciesCaracter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UploadedFile" EntityType="Self.UploadedFile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CharacterDependencyView" EntityType="Self.CharacterDependencyView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[CharacterDependencyView].[CategoryID] AS [CategoryID], 
+[CharacterDependencyView].[CategoryName] AS [CategoryName], 
+[CharacterDependencyView].[CharacterID] AS [CharacterID], 
+[CharacterDependencyView].[CharacterCode] AS [CharacterCode], 
+[CharacterDependencyView].[CharacterDescription] AS [CharacterDescription], 
+[CharacterDependencyView].[CharacterStateID] AS [CharacterStateID], 
+[CharacterDependencyView].[CharacterStateCode] AS [CharacterStateCode], 
+[CharacterDependencyView].[CharacterStateDescription] AS [CharacterStateDescription], 
+[CharacterDependencyView].[DisabledCharacterID] AS [DisabledCharacterID], 
+[CharacterDependencyView].[DisabledCharacterCode] AS [DisabledCharacterCode], 
+[CharacterDependencyView].[DisabledCharacterDescription] AS [DisabledCharacterDescription], 
+[CharacterDependencyView].[DisabledCategoryID] AS [DisabledCategoryID], 
+[CharacterDependencyView].[DisabledCategoryName] AS [DisabledCategoryName]
+FROM [dbo].[CharacterDependencyView] AS [CharacterDependencyView]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="CharacterStateView" EntityType="Self.CharacterStateView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[CharacterStateView].[CategoryID] AS [CategoryID], 
+[CharacterStateView].[CategoryName] AS [CategoryName], 
+[CharacterStateView].[CharacterID] AS [CharacterID], 
+[CharacterStateView].[CharacterCode] AS [CharacterCode], 
+[CharacterStateView].[CharacterDescription] AS [CharacterDescription], 
+[CharacterStateView].[CharacterStateID] AS [CharacterStateID], 
+[CharacterStateView].[CharacterStateCode] AS [CharacterStateCode], 
+[CharacterStateView].[CharacterStateDescription] AS [CharacterStateDescription]
+FROM [dbo].[CharacterStateView] AS [CharacterStateView]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Character_CharacterCategory" Association="Self.FK_Character_CharacterCategory">
+            <End Role="CharacterCategory" EntitySet="CharacterCategory" />
+            <End Role="Character" EntitySet="Character" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CharacterState_Character" Association="Self.FK_CharacterState_Character">
+            <End Role="Character" EntitySet="Character" />
+            <End Role="CharacterState" EntitySet="CharacterState" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DisabledCharacter_Character" Association="Self.FK_DisabledCharacter_Character">
+            <End Role="Character" EntitySet="Character" />
+            <End Role="DisabledCharacter" EntitySet="DisabledCharacter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DisabledCharacter_CharacterState" Association="Self.FK_DisabledCharacter_CharacterState">
+            <End Role="CharacterState" EntitySet="CharacterState" />
+            <End Role="DisabledCharacter" EntitySet="DisabledCharacter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpeciesCaracter_CharacterState" Association="Self.FK_SpeciesCaracter_CharacterState">
+            <End Role="CharacterState" EntitySet="CharacterState" />
+            <End Role="SpeciesCaracter" EntitySet="SpeciesCaracter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpeciesCaracter_Species" Association="Self.FK_SpeciesCaracter_Species">
+            <End Role="Species" EntitySet="Species" />
+            <End Role="SpeciesCaracter" EntitySet="SpeciesCaracter" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="InteractiveKeyModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="InteractiveKeyEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="CharacterCategories" EntityType="InteractiveKeyModel.CharacterCategory" />
+          <EntitySet Name="Species" EntityType="InteractiveKeyModel.Species" />
+          <EntitySet Name="Characters" EntityType="InteractiveKeyModel.Character" />
+          <EntitySet Name="CharacterStates" EntityType="InteractiveKeyModel.CharacterState" />
+          <AssociationSet Name="FK_Character_CharacterCategory" Association="InteractiveKeyModel.FK_Character_CharacterCategory">
+            <End Role="CharacterCategory" EntitySet="CharacterCategories" />
+            <End Role="Character" EntitySet="Characters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CharacterState_Character" Association="InteractiveKeyModel.FK_CharacterState_Character">
+            <End Role="Character" EntitySet="Characters" />
+            <End Role="CharacterState" EntitySet="CharacterStates" />
+          </AssociationSet>
+          <AssociationSet Name="DisabledCharacter" Association="InteractiveKeyModel.DisabledCharacter">
+            <End Role="Character" EntitySet="Characters" />
+            <End Role="CharacterState" EntitySet="CharacterStates" />
+          </AssociationSet>
+          <AssociationSet Name="SpeciesCaracter" Association="InteractiveKeyModel.SpeciesCaracter">
+            <End Role="CharacterState" EntitySet="CharacterStates" />
+            <End Role="Species" EntitySet="Species" />
+          </AssociationSet>
+          <EntitySet Name="CharacterDependencyViews" EntityType="InteractiveKeyModel.CharacterDependencyView" />
+          <EntitySet Name="CharacterStateViews" EntityType="InteractiveKeyModel.CharacterStateView" />
+          <EntitySet Name="UploadedFiles" EntityType="InteractiveKeyModel.UploadedFile" />
+          </EntityContainer>
+        <EntityType Name="CharacterCategory">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Characters" Relationship="InteractiveKeyModel.FK_Character_CharacterCategory" FromRole="CharacterCategory" ToRole="Character" />
+        </EntityType>
+        <EntityType Name="Species">
+          <Key>
+            <PropertyRef Name="SpeciesID" />
+          </Key>
+          <Property Name="SpeciesID" Type="Int32" Nullable="false" />
+          <Property Name="SpeciesName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DescriptionFile" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="DescriptionFileName" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CharacterStates" Relationship="InteractiveKeyModel.SpeciesCaracter" FromRole="Species" ToRole="CharacterState" />
+        </EntityType>
+        <EntityType Name="Character">
+          <Key>
+            <PropertyRef Name="CharacterID" />
+          </Key>
+          <Property Name="CharacterID" Type="Int32" Nullable="false" />
+          <Property Name="CharacterCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CharacterDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="CharacterCategory" Relationship="InteractiveKeyModel.FK_Character_CharacterCategory" FromRole="Character" ToRole="CharacterCategory" />
+          <NavigationProperty Name="CharacterStates" Relationship="InteractiveKeyModel.FK_CharacterState_Character" FromRole="Character" ToRole="CharacterState" />
+          <NavigationProperty Name="DisablingCharacterStates" Relationship="InteractiveKeyModel.DisabledCharacter" FromRole="Character" ToRole="CharacterState" />
+        </EntityType>
+        <EntityType Name="CharacterState">
+          <Key>
+            <PropertyRef Name="CharacterStateID" />
+          </Key>
+          <Property Name="CharacterStateID" Type="Int32" Nullable="false" />
+          <Property Name="CharacterID" Type="Int32" Nullable="false" />
+          <Property Name="CharacterStateCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CharacterStateDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Character" Relationship="InteractiveKeyModel.FK_CharacterState_Character" FromRole="CharacterState" ToRole="Character" />
+          <NavigationProperty Name="DisabledCharacters" Relationship="InteractiveKeyModel.DisabledCharacter" FromRole="CharacterState" ToRole="Character" />
+          <NavigationProperty Name="Species" Relationship="InteractiveKeyModel.SpeciesCaracter" FromRole="CharacterState" ToRole="Species" />
+        </EntityType>
+        <Association Name="FK_Character_CharacterCategory">
+          <End Type="InteractiveKeyModel.CharacterCategory" Role="CharacterCategory" Multiplicity="1" />
+          <End Type="InteractiveKeyModel.Character" Role="Character" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CharacterCategory">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="Character">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CharacterState_Character">
+          <End Type="InteractiveKeyModel.Character" Role="Character" Multiplicity="1" />
+          <End Type="InteractiveKeyModel.CharacterState" Role="CharacterState" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Character">
+              <PropertyRef Name="CharacterID" />
+            </Principal>
+            <Dependent Role="CharacterState">
+              <PropertyRef Name="CharacterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DisabledCharacter">
+          <End Type="InteractiveKeyModel.Character" Role="Character" Multiplicity="*" />
+          <End Type="InteractiveKeyModel.CharacterState" Role="CharacterState" Multiplicity="*" />
+        </Association>
+        <Association Name="SpeciesCaracter">
+          <End Type="InteractiveKeyModel.CharacterState" Role="CharacterState" Multiplicity="*" />
+          <End Type="InteractiveKeyModel.Species" Role="Species" Multiplicity="*" />
+        </Association>
+        <EntityType Name="CharacterDependencyView">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+            <PropertyRef Name="CategoryName" />
+            <PropertyRef Name="CharacterID" />
+            <PropertyRef Name="CharacterCode" />
+            <PropertyRef Name="CharacterStateID" />
+            <PropertyRef Name="CharacterStateCode" />
+            <PropertyRef Name="DisabledCharacterID" />
+            <PropertyRef Name="DisabledCharacterCode" />
+            <PropertyRef Name="DisabledCategoryID" />
+            <PropertyRef Name="DisabledCategoryName" />
+          </Key>
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CharacterID" Type="Int32" Nullable="false" />
+          <Property Name="CharacterCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CharacterDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CharacterStateID" Type="Int32" Nullable="false" />
+          <Property Name="CharacterStateCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CharacterStateDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DisabledCharacterID" Type="Int32" Nullable="false" />
+          <Property Name="DisabledCharacterCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DisabledCharacterDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DisabledCategoryID" Type="Int32" Nullable="false" />
+          <Property Name="DisabledCategoryName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CharacterStateView">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+            <PropertyRef Name="CategoryName" />
+            <PropertyRef Name="CharacterID" />
+            <PropertyRef Name="CharacterCode" />
+            <PropertyRef Name="CharacterStateID" />
+            <PropertyRef Name="CharacterStateCode" />
+          </Key>
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CharacterID" Type="Int32" Nullable="false" />
+          <Property Name="CharacterCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CharacterDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CharacterStateID" Type="Int32" Nullable="false" />
+          <Property Name="CharacterStateCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CharacterStateDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="UploadedFile">
+          <Key>
+            <PropertyRef Name="FileID" />
+          </Key>
+          <Property Name="FileID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FileData" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="FileName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="FIleDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FileType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="InteractiveKeyModelStoreContainer" CdmEntityContainer="InteractiveKeyEntities">
+          <EntitySetMapping Name="CharacterCategories">
+            <EntityTypeMapping TypeName="InteractiveKeyModel.CharacterCategory">
+              <MappingFragment StoreEntitySet="CharacterCategory">
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Species">
+            <EntityTypeMapping TypeName="InteractiveKeyModel.Species">
+              <MappingFragment StoreEntitySet="Species">
+                <ScalarProperty Name="DescriptionFileName" ColumnName="DescriptionFileName" />
+                <ScalarProperty Name="DescriptionFile" ColumnName="DescriptionFile" />
+                <ScalarProperty Name="SpeciesName" ColumnName="SpeciesName" />
+                <ScalarProperty Name="SpeciesID" ColumnName="SpeciesID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Characters">
+            <EntityTypeMapping TypeName="InteractiveKeyModel.Character">
+              <MappingFragment StoreEntitySet="Character">
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="CharacterDescription" ColumnName="CharacterDescription" />
+                <ScalarProperty Name="CharacterCode" ColumnName="CharacterCode" />
+                <ScalarProperty Name="CharacterID" ColumnName="CharacterID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CharacterStates">
+            <EntityTypeMapping TypeName="InteractiveKeyModel.CharacterState">
+              <MappingFragment StoreEntitySet="CharacterState">
+                <ScalarProperty Name="CharacterStateDescription" ColumnName="CharacterStateDescription" />
+                <ScalarProperty Name="CharacterStateCode" ColumnName="CharacterStateCode" />
+                <ScalarProperty Name="CharacterID" ColumnName="CharacterID" />
+                <ScalarProperty Name="CharacterStateID" ColumnName="CharacterStateID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="DisabledCharacter" TypeName="InteractiveKeyModel.DisabledCharacter" StoreEntitySet="DisabledCharacter">
+            <EndProperty Name="CharacterState">
+              <ScalarProperty Name="CharacterStateID" ColumnName="CharacterStateID" />
+            </EndProperty>
+            <EndProperty Name="Character">
+              <ScalarProperty Name="CharacterID" ColumnName="CharacterID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="SpeciesCaracter" TypeName="InteractiveKeyModel.SpeciesCaracter" StoreEntitySet="SpeciesCaracter">
+            <EndProperty Name="Species">
+              <ScalarProperty Name="SpeciesID" ColumnName="SpeciesID" />
+            </EndProperty>
+            <EndProperty Name="CharacterState">
+              <ScalarProperty Name="CharacterStateID" ColumnName="CharacterStateID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="CharacterDependencyViews">
+            <EntityTypeMapping TypeName="InteractiveKeyModel.CharacterDependencyView">
+              <MappingFragment StoreEntitySet="CharacterDependencyView">
+                <ScalarProperty Name="DisabledCategoryName" ColumnName="DisabledCategoryName" />
+                <ScalarProperty Name="DisabledCategoryID" ColumnName="DisabledCategoryID" />
+                <ScalarProperty Name="DisabledCharacterDescription" ColumnName="DisabledCharacterDescription" />
+                <ScalarProperty Name="DisabledCharacterCode" ColumnName="DisabledCharacterCode" />
+                <ScalarProperty Name="DisabledCharacterID" ColumnName="DisabledCharacterID" />
+                <ScalarProperty Name="CharacterStateDescription" ColumnName="CharacterStateDescription" />
+                <ScalarProperty Name="CharacterStateCode" ColumnName="CharacterStateCode" />
+                <ScalarProperty Name="CharacterStateID" ColumnName="CharacterStateID" />
+                <ScalarProperty Name="CharacterDescription" ColumnName="CharacterDescription" />
+                <ScalarProperty Name="CharacterCode" ColumnName="CharacterCode" />
+                <ScalarProperty Name="CharacterID" ColumnName="CharacterID" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CharacterStateViews">
+            <EntityTypeMapping TypeName="InteractiveKeyModel.CharacterStateView">
+              <MappingFragment StoreEntitySet="CharacterStateView">
+                <ScalarProperty Name="CharacterStateDescription" ColumnName="CharacterStateDescription" />
+                <ScalarProperty Name="CharacterStateCode" ColumnName="CharacterStateCode" />
+                <ScalarProperty Name="CharacterStateID" ColumnName="CharacterStateID" />
+                <ScalarProperty Name="CharacterDescription" ColumnName="CharacterDescription" />
+                <ScalarProperty Name="CharacterCode" ColumnName="CharacterCode" />
+                <ScalarProperty Name="CharacterID" ColumnName="CharacterID" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UploadedFiles">
+            <EntityTypeMapping TypeName="InteractiveKeyModel.UploadedFile">
+              <MappingFragment StoreEntitySet="UploadedFile">
+                <ScalarProperty Name="FileType" ColumnName="FileType" />
+                <ScalarProperty Name="FIleDescription" ColumnName="FIleDescription" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="FileData" ColumnName="FileData" />
+                <ScalarProperty Name="FileID" ColumnName="FileID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

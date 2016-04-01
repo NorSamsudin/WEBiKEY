@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fd882e29adb449629b18f161861432b5" Name="Diagram1" ZoomLevel="75">
+        <EntityTypeShape EntityType="InteractiveKeyModel.CharacterCategory" Width="1.75" PointX="0.5" PointY="0.5" />
+        <EntityTypeShape EntityType="InteractiveKeyModel.Species" Width="1.5" PointX="5" PointY="3.875" />
+        <EntityTypeShape EntityType="InteractiveKeyModel.Character" Width="2.375" PointX="3" PointY="0.5" />
+        <EntityTypeShape EntityType="InteractiveKeyModel.CharacterState" Width="2.375" PointX="0.5" PointY="3.75" />
+        <AssociationConnector Association="InteractiveKeyModel.FK_Character_CharacterCategory" />
+        <AssociationConnector Association="InteractiveKeyModel.FK_CharacterState_Character" />
+        <AssociationConnector Association="InteractiveKeyModel.DisabledCharacter" />
+        <AssociationConnector Association="InteractiveKeyModel.SpeciesCaracter" />
+        <EntityTypeShape EntityType="InteractiveKeyModel.CharacterDependencyView" Width="2.75" PointX="9.375" PointY="3.5" FillColor="Silver" />
+        <EntityTypeShape EntityType="InteractiveKeyModel.CharacterStateView" Width="2.25" PointX="9.375" PointY="0.5" FillColor="Silver" />
+        <EntityTypeShape EntityType="InteractiveKeyModel.UploadedFile" Width="1.5" PointX="12.125" PointY="0.5" />
+      </Diagram>
+      <Diagram DiagramId="197c1d8479624e73902ae08f39efbe9e" Name="Diagram2" ZoomLevel="172" >
+        <EntityTypeShape EntityType="InteractiveKeyModel.CharacterCategory" Width="1.875" PointX="0.5" PointY="0.5" />
+        <EntityTypeShape EntityType="InteractiveKeyModel.Species" Width="1.875" PointX="3.875" PointY="3.875" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,39 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="AdminMaster.Master.cs" Inherits="WEBiKEY.Application.Master.AdminMaster" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <link href="~/Styles/styles.css" rel="stylesheet" />
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <div id="container">
+        <div id="menubar">
+            <ul>
+                <li><a runat="server" href="~/">Back to Interactive Key...</a></li>
+
+                <li><a runat="server" href="~/Admin/ImportCharactersAndStates.aspx">Import Characters / States...</a></li>
+                <li><a runat="server" href="~/Admin/ImportSpeciesAndStates.aspx">Import Species / States...</a></li>
+                <li><a runat="server" href="~/Admin/ConfigureCharacterDependencies.aspx">Configure Character Dependencies...</a></li>
+
+                <li><a runat="server" href="~/Admin/UploadCharacterImages.aspx">Upload Character Images...</a></li>
+                <li><a runat="server" href="~/Admin/UploadSpeciesDescriptionFile.aspx">Upload Species Descriptions...</a></li>
+                <li><a runat="server" href="~/Admin/UploadGlossaryFile.aspx">Upload Glossary file...</a></li>
+
+            </ul>
+        </div>
+        <div class="clear"></div>
+        <form id="form1" runat="server">
+            <asp:Button runat="server" CssClass="logoff-button" Text="Logoff" OnClick="Unnamed1_Click" />
+            <div id="content">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolderContent" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+            <div id="footer">Copyright © 2015-2016, Lakshmi Attigala</div>
+        </form>
+    </div>
+</body>
+</html>
